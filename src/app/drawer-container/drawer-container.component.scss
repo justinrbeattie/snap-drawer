@@ -1,0 +1,51 @@
+app-drawer-container {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  background: black;
+  --zoom-level: calc(
+    var(--bottom-slide-over-drawer-ratio) + var(--bottom-drawer-ratio)
+  );
+
+  > * {
+    grid-column: 1;
+    grid-row: 1;
+
+    &.content {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      overflow: hidden;
+      height: 100%;
+      background: #fff;
+      position: relative;
+      z-index: 1;
+      border-radius: calc(var(--zoom-level) * 8px);
+      transform: translateY(calc(var(--zoom-level) * 4px))
+        scale(calc(1 - var(--zoom-level) * 0.025));
+      transition: 200ms all linear;
+      > * {
+        grid-column: 1;
+        grid-row: 1;
+        &.content-inner {
+          grid-column: 1;
+          grid-row: 1;
+          width: 100%;
+          padding-top: var(--top-drawer-collapsed);
+          padding-bottom: var(--bottom-drawer-collapsed);
+          height: 100%;
+          position: relative;
+          z-index: 1;
+        }
+      }
+    }
+
+    & app-bottom-drawer drawer-content {
+      border-radius: calc(var(--zoom-level) * 8px);
+      transform: translateY(calc(var(--zoom-level) * 4px))
+        scale(calc(1 - var(--zoom-level) * 0.025));
+      transition: 200ms all linear;
+    }
+  }
+}

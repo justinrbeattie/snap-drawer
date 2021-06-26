@@ -1,0 +1,49 @@
+:host {
+  --drawer-size-collapsed: var(--top-drawer-collapsed);
+  --drawer-size-expanded: var(--top-drawer-expanded);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: scroll;
+  scroll-snap-type: mandatory;
+  scroll-snap-type: y mandatory;
+
+  &::-webkit-scrollbar {
+    display: none; // Safari and Chrome
+  }
+
+  &.smooth {
+    scroll-behavior: smooth;
+  }
+
+  &.disabled {
+    overflow: hidden;
+  }
+
+  &.hidden {
+    .placeholder {
+      height: 100%;
+    }
+  }
+
+  .placeholder {
+    scroll-snap-align: start;
+    flex-grow: 2;
+    flex-shrink: 0;
+    pointer-events: none;
+    width: 100%;
+    height: calc(100% - var(--drawer-size-collapsed));
+  }
+
+  .drawer {
+    scroll-snap-align: start;
+    flex-grow: 2;
+    flex-shrink: 0;
+    width: 100%;
+    height: var(--drawer-size-expanded);
+    position: relative;
+    z-index: 100;
+    transition: 200ms all ease-in-out;
+  }
+}

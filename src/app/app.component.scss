@@ -1,0 +1,47 @@
+:host {
+  app-drawer-container {
+    width: 100vw;
+    height: 100vh;
+    --top-drawer-collapsed: 32px;
+    --top-drawer-expanded: calc(100% - 180px);
+    --bottom-drawer-collapsed: 168px;
+    --bottom-drawer-expanded: calc(100% - 40px);
+    --bottom-slide-over-drawer-collapsed: 0px;
+    --bottom-slide-over-drawer-expanded: calc(100% - 40px);
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  app-top-drawer {
+    app-drawer-content {
+      background: #ededed;
+      backdrop-filter: blur(20px);
+      box-shadow: 0px 0px calc(var(--drawer-ratio) * 40px) -8px rgba(0, 0, 0, 0.8);
+      border: 1px solid #c0c0c0;
+      border-top-left-radius: calc(var(--bottom-drawer-ratio) * 8px);
+      border-top-right-radius: calc(var(--bottom-drawer-ratio) * 8px);
+    }
+    &.expanded app-drawer-content {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  app-bottom-drawer {
+    app-drawer-content {
+      background: #ededed;
+      box-shadow: 0px calc((1 - var(--drawer-ratio)) * 40px) 40px -8px rgba(0, 0, 0, 0.8);
+      border: 1px solid #c0c0c0;
+    }
+  }
+
+  app-bottom-slide-over-drawer {
+    app-drawer-content {
+      background: red;
+      box-shadow: 0px calc((1 - var(--drawer-ratio)) * 40px) 40px -8px rgba(0, 0, 0, 0.8);
+      border: 1px solid #c0c0c0;
+    }
+  }
+}
